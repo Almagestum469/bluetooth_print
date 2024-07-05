@@ -11,8 +11,7 @@ class BluetoothDevice {
   int? type = 0;
   bool? connected = false;
 
-  factory BluetoothDevice.fromJson(Map<String, dynamic> json) =>
-      _$BluetoothDeviceFromJson(json);
+  factory BluetoothDevice.fromJson(Map<String, dynamic> json) => _$BluetoothDeviceFromJson(json);
   Map<String, dynamic> toJson() => _$BluetoothDeviceToJson(this);
 }
 
@@ -29,6 +28,8 @@ class LineText {
       this.absolutePos = 0,
       this.relativePos = 0,
       this.fontZoom = 1,
+      this.fontZoomX = 1,
+      this.fontZoomY = 1,
       this.underline = 0, //0,1
       this.linefeed = 0, //0,1
       this.x = 0,
@@ -68,6 +69,12 @@ class LineText {
   /// ['text'] font zoom level, include 1-8
   final int? fontZoom;
 
+  /// ['text'] font x zoom level, include 1-8, only work in TSC
+  final int? fontZoomX;
+
+  /// ['text'] font y zoom level, include 1-8, only work in TSC
+  final int? fontZoomY;
+
   /// ['text'] show underline
   final int? underline;
 
@@ -77,7 +84,6 @@ class LineText {
   final int? x;
   final int? y;
 
-  factory LineText.fromJson(Map<String, dynamic> json) =>
-      _$LineTextFromJson(json);
+  factory LineText.fromJson(Map<String, dynamic> json) => _$LineTextFromJson(json);
   Map<String, dynamic> toJson() => _$LineTextToJson(this);
 }

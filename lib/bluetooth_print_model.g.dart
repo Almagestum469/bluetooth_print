@@ -42,6 +42,8 @@ LineText _$LineTextFromJson(Map<String, dynamic> json) {
     absolutePos: json['absolutePos'] as int?,
     relativePos: json['relativePos'] as int?,
     fontZoom: json['fontZoom'] as int?,
+    fontZoomX: json['fontZoomX'] as int?,
+    fontZoomY: json['fontZoomY'] as int?,
     underline: json['underline'] as int?,
     linefeed: json['linefeed'] as int?,
     x: json['x'] as int?,
@@ -68,6 +70,8 @@ Map<String, dynamic> _$LineTextToJson(LineText instance) {
   writeNotNull('absolutePos', instance.absolutePos);
   writeNotNull('relativePos', instance.relativePos);
   writeNotNull('fontZoom', instance.fontZoom);
+  writeNotNull('fontZoomX', instance.fontZoomX);
+  writeNotNull('fontZoomY', instance.fontZoomY);
   writeNotNull('underline', instance.underline);
   writeNotNull('linefeed', instance.linefeed);
   writeNotNull('x', instance.x);
