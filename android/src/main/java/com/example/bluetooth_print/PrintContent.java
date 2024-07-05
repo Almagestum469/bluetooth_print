@@ -116,6 +116,38 @@ public class PrintContent {
             return esc.getCommand();
       }
 
+
+      private static LabelCommand.FONTMUL fontZoomToFONTMUL(int fontZoom) {
+            if(fontZoom == 2) {
+                  return LabelCommand.FONTMUL.MUL_2;
+            }
+            if(fontZoom == 3) {
+                  return LabelCommand.FONTMUL.MUL_3;
+            }
+            if(fontZoom == 4) {
+                  return LabelCommand.FONTMUL.MUL_4;
+            }
+            if(fontZoom == 5) {
+                  return LabelCommand.FONTMUL.MUL_5;
+            }
+            if(fontZoom == 6) {
+                  return LabelCommand.FONTMUL.MUL_6;
+            }
+            if(fontZoom == 7) {
+                  return LabelCommand.FONTMUL.MUL_7;
+            }
+            if(fontZoom == 8) {
+                  return LabelCommand.FONTMUL.MUL_8;
+            }
+            if(fontZoom == 9) {
+                  return LabelCommand.FONTMUL.MUL_9;
+            }
+            if(fontZoom == 10) {
+                  return LabelCommand.FONTMUL.MUL_10;
+            }
+            return LabelCommand.FONTMUL.MUL_1;
+      }
+
       /**
        * 标签打印对象转换
        */
@@ -149,10 +181,12 @@ public class PrintContent {
                   String content = (String)m.get("content");
                   int x = (int)(m.get("x")==null?0:m.get("x")); //dpi: 1mm约为8个点
                   int y = (int)(m.get("y")==null?0:m.get("y"));
+                  int fontZoomX = (int)(m.get("fontZoomX")==null?1:m.get("fontZoomX"));
+                  int fontZoomY = (int)(m.get("fontZoomY")==null?1:m.get("fontZoomY"));
 
                   if("text".equals(type)){
                         // 绘制简体中文
-                        tsc.addText(x, y, LabelCommand.FONTTYPE.SIMPLIFIED_CHINESE, LabelCommand.ROTATION.ROTATION_0, LabelCommand.FONTMUL.MUL_1, LabelCommand.FONTMUL.MUL_1, content);
+                        tsc.addText(x, y, LabelCommand.FONTTYPE.SIMPLIFIED_CHINESE, LabelCommand.ROTATION.ROTATION_0, PrintContent.fontZoomToFONTMUL(fontZoomX), PrintContent.fontZoomToFONTMUL(fontZoomY), content);
                         //打印繁体
                         //tsc.addUnicodeText(10,32, LabelCommand.FONTTYPE.TRADITIONAL_CHINESE, LabelCommand.ROTATION.ROTATION_0, LabelCommand.FONTMUL.MUL_1, LabelCommand.FONTMUL.MUL_1,"BIG5碼繁體中文字元","BIG5");
                         //打印韩文
