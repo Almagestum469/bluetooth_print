@@ -161,9 +161,10 @@
         NSString *content = [m objectForKey:@"content"];
         NSNumber *x = ![m objectForKey:@"x"]?@0 : [m objectForKey:@"x"];
         NSNumber *y = ![m objectForKey:@"y"]?@0 : [m objectForKey:@"y"];
+        NSNumber *fontZoom = ![m objectForKey:@"fontZoom"]?@1 : [m objectForKey:@"fontZoom"];
         
         if([@"text" isEqualToString:type]){
-            [command addTextwithX:[x intValue] withY:[y intValue] withFont:@"TSS24.BF2" withRotation:0 withXscal:1 withYscal:1 withText:content];
+            [command addTextwithX:[x intValue] withY:[y intValue] withFont:@"TSS24.BF2" withRotation:0 withXscal:[fontZoom intValue] withYscal:[fontZoom intValue] withText:content];
         }else if([@"barcode" isEqualToString:type]){
             [command add1DBarcode:[x intValue] :[y intValue] :@"CODE128" :100 :1 :0 :2 :2 :content];
         }else if([@"qrcode" isEqualToString:type]){
